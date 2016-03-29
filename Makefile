@@ -1,8 +1,9 @@
-SRC := okapi_bm25.c
-OUT := okapi_bm25.sqlext
+SRC = okapi_bm25.c
+OUT = okapi_bm25.sqlext
+INCLUDE = -I./include/twitter-app
 
 $(OUT): $(SRC)
-	gcc -Wall -Werror -bundle -fPIC -Isqlite3 -o $(OUT) $(SRC)
+	gcc -Wall -Werror -fPIC -shared $(INCLUDE) -o $(OUT) $(SRC)
 
 clean:
 	rm -f $(OUT)
